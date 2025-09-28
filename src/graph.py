@@ -161,3 +161,20 @@ class Graph:
 
         return "".join(s)
 
+
+    @staticmethod
+    def from_txt(filepath):
+        
+        with open(filepath, "r") as f:
+            lines = [line.strip() for line in f if line.strip()]
+
+        V = int(lines[0])
+        E = int(lines[1])
+
+        g = Graph(V)
+
+        for line in lines[2:]:
+            v, w = map(int, line.split())
+            g.add_edge(v, w)
+
+        return g
