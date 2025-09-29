@@ -2,6 +2,7 @@ import string
 from graph import Graph
 from stack import Stack
 from copy import deepcopy
+from os.path import join, dirname, abspath
 
 
 def print_letters(cycle: Stack):
@@ -131,9 +132,7 @@ class Hierholzer:
         return False
 
 
-if __name__ == '__main__':
-    from os.path import join, dirname, abspath
-
+def main():
     data_file = join(dirname(abspath(__file__)), '..', 'data', 'hierholzer.txt')
     g = Graph.from_txt(data_file)
 
@@ -142,3 +141,7 @@ if __name__ == '__main__':
 
     hierholzer = Hierholzer(g)    
     print(print_letters(hierholzer.make_circuit(2)))
+
+
+if __name__ == '__main__':
+    main()
