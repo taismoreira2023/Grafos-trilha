@@ -1,8 +1,9 @@
+from os.path import join, dirname, abspath
 from graph import Graph
 from fleury import Fleury
 
 def main():
-    filepath = "d:\\Documentos\\Grafos-trilha\\graph_input.txt"
+    filepath = join(dirname(abspath(__file__)), '..', 'graph_input.txt')
     g = Graph.from_txt(filepath)
     print(g)
     fleury = Fleury(g)
