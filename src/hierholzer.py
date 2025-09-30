@@ -81,8 +81,9 @@ class Hierholzer:
     def __init__(self, graph: Graph):
         self.graph = graph
     
-    def make_circuit(self, v: int):
-        finder = CycleFromVertex(self.graph, v)
+    def make_circuit(self, v = None):
+        start = v if v is not None else self.get_start_vertex(self.graph)
+        finder = CycleFromVertex(self.graph, start)
         cycle = finder.cycle()
         k = make_graph_without_cycle(self.graph, cycle)
         h = Stack()
@@ -94,6 +95,17 @@ class Hierholzer:
             k = make_graph_without_cycle(self.graph, cycle)
 
         return cycle
+    
+    def get_start_vertex(self, graph: Graph):
+        for v in range(graph.V()):
+            if graph.degree(v) % 2 != 0:
+                return v
+
+        for v in range(graph.V()):
+            if graph.degree(v) > 0:
+                return v
+
+        return 0
     
     def get_vertex_from_cycle(self, k: Graph, cycle: Stack):
         for v in cycle:
