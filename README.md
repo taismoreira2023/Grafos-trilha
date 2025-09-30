@@ -24,14 +24,18 @@ Um **circuito euleriano** é um caminho fechado em um grafo que percorre cada ar
 Para executar o algoritmo Hierholzer
 
 ```sh
-python src/hierholzer.py
+python src/main.py hierholzer
+# ou caso queira passar um arquivo especifico
+cat data/c4_isolado9.txt | python src/main.py hierholzer
 ```
 
 ### Fleury
 Para executar o algoritmo Fleury
 
 ```sh
-python src/main.py
+python src/main.py fleury
+# ou caso queira passar um arquivo especifico
+cat data/c4_isolado9.txt | python src/main.py fleury
 ```
 
 
@@ -41,11 +45,11 @@ Este projeto utiliza como base o repositório [`itu-algs4`](https://github.com/i
 
 ### Principais classes utilizadas do `itu-algs4`:
 - `Graph`: representação de grafos não direcionados.
-- `Stack`, `Bag`: estruturas auxiliares para os algoritmos.
+- `Stack`, `Bag`, `DepthFirstSearch`: estruturas auxiliares para os algoritmos.
 
 ### Classes dos algortimos
 - `Fleury`: Algoritmo de Fleury, arquivo: `src/fleury.py`
-- `Fleury`: Algoritmo de Hierholzer, arquivo: `src/hierholzer.py`
+- `Hierholzer`: Algoritmo de Hierholzer, arquivo: `src/hierholzer.py`
 
 ## 📁 Estrutura do Projeto
 
@@ -54,10 +58,17 @@ Este projeto utiliza como base o repositório [`itu-algs4`](https://github.com/i
 │ ├── bag.py
 │ ├── graph.py
 │ ├── stack.py
-│ ├── main.py
+│ ├── depth_first_search.py
+│ ├── main.py # arquivo principal
 │ ├── fleury.py # Algortimo fleury
+│ ├── utils.py # verificar se o grafo é euleriano
 │ └── hierholzer.py # Algoritmo Hierholzer
-├── data/
-│ └── hierholzer.txt
-├── README.md
+├── data/ # grafos de teste
+│ ├── c4.txt # Existe circuito (ciclo 0–1–2–3–0).
+│ ├── c4_isolado9.txt # Existe circuito (C₄ + vértice isolado; conectividade ignora isolados).
+│ ├── caminho_triangulo.txt # Não euleriano (graus ímpares).
+│ ├── konigsberg.txt # Não euleriano (proxy de K₄).
+│ ├── desconexo.txt # Desconexo (dois componentes com arestas).
+│ └── hierholzer.txt # dados para exemplo de hierholzer
+└── README.md
 ```
