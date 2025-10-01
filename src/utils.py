@@ -24,4 +24,4 @@ def is_eulerian(graph):
     if odd == 0:
         return "circuito"
 
-    raise ValueError(f"O grafo não possui é euleriano pois possui {odd} vertices de grau impar.")
+    raise ValueError(f"O grafo não é euleriano pois possui {odd} vertices de grau impar.")
